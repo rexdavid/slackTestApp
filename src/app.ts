@@ -46,13 +46,32 @@ app.action('button_click', async ({ body, ack, say }: any) => {
   await say(`<@${body.user.id}> clicked the button`);
 });
 
+app.action('approve_123', async ({ body, ack, say }: any) => {
+  // Acknowledge the action
+  await ack();
+  await say(`<@${body.user.id}> clicked the APPROVE button`);
+});
+
+app.action('deny_123', async ({ body, ack, say }: any) => {
+  // Acknowledge the action
+  await ack();
+  await say(`<@${body.user.id}> clicked the DENY button`);
+});
+// The echo command simply echoes on command. The requestURL should match the requestURL specified in the events section of your app's configuration
+app.command('/echo', async ({ command, ack, respond, say }) => {
+  // Acknowledge command request
+  await ack();
+
+  //either can be used
+  await respond(`${command.text}`);
+  await say(`${command.text}`);
+});
+
 setTimeout(() => {
   postMsg();
 }, 2000);
 
 export default app;
-
-
 
 //IIFE
 (async () => {

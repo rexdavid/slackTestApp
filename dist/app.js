@@ -42,27 +42,31 @@ app.action('button_click', async ({ body, ack, say }) => {
     await ack();
     await say(`<@${body.user.id}> clicked the button`);
 });
+app.action('approve_123', async ({ body, ack, say }) => {
+    // Acknowledge the action
+    await ack();
+    await say(`<@${body.user.id}> clicked the APPROVE button`);
+});
+app.action('deny_123', async ({ body, ack, say }) => {
+    // Acknowledge the action
+    await ack();
+    await say(`<@${body.user.id}> clicked the DENY button`);
+});
+// The echo command simply echoes on command. The requestURL should match the requestURL specified in the events section of your app's configuration
+app.command('/echo', async ({ command, ack, respond, say }) => {
+    // Acknowledge command request
+    await ack();
+    //either can be used
+    await respond(`${command.text}`);
+    await say(`${command.text}`);
+});
 setTimeout(() => {
     postMsg();
 }, 2000);
 export default app;
-// // When a user msgs in the bot added channel, send a message in a predefined channel asking them to introduce themselves
-// app.event('message', async ({ event, client, logger }) => {
-//   try {
-//     // Call chat.postMessage with the built-in client
-//     const result = await client.chat.postMessage({
-//       channel: 'C03DFCZKXL4',
-//       //@ts-ignore
-//       text: `Welcome to the team, <@${event.user}>! 🎉 You can introduce yourself in this channel.`,
-//     });
-//     logger.info(result);
-//     logger.info(event);
-//   } catch (error) {
-//     logger.error(error);
-//   }
-// });
 //IIFE
 (async () => {
+    //set up listeners
     await event();
     // Start your app
     await app.start();
