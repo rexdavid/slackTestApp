@@ -70,6 +70,6 @@ export default app;
     await event();
     // Start your app
     await app.start();
-    console.log('⚡️ Bolt app is running!');
+    console.log('⚡️ Bolt app is running!!');
 })();
 //# sourceMappingURL=app.js.map

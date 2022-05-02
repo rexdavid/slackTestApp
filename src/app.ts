@@ -80,5 +80,5 @@ export default app;
   // Start your app
   await app.start();
 
-  console.log('⚡️ Bolt app is running!');
+  console.log('⚡️ Bolt app is running!!');
 })();
